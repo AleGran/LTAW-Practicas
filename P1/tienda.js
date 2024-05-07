@@ -9,6 +9,7 @@ const server = http.createServer((req, res) => {
 
     console.log("Hola");
 
+    res.setHeader('Content-Type', 'text/plain');
     res.write("Hola");
 
     res.end();
