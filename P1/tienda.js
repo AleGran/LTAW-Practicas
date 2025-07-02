@@ -1,6 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 const path = require('path');
+const { contentType } = require('express/lib/response');
 
 //-- Puerto y rutas de las páginas principales
 const PUERTO = 8080;
@@ -63,7 +64,7 @@ const server = http.createServer((req, res) => {
                         }
                     });
             } else {
-                res.writeHead(200, { 'Content-Type': 'text/html' });
+                res.writeHead(200, { 'Content-Type': mimeInfo.type });
                 res.end(data); //-- Envío del recurso pedido
                 }
             })
