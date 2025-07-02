@@ -4,7 +4,7 @@ const path = require('path');
 const { contentType } = require('express/lib/response');
 
 //-- Puerto y rutas de las páginas principales
-const PUERTO = 8080;
+const PUERTO = 8001;
 
 const index_path = './index.html';
 const error_path = './error.html';
