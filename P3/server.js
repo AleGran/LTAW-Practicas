@@ -46,14 +46,14 @@ io.on('connect', (socket) => {
   socket.on("message", (msg)=> {
     if (msg.startsWith('/')) {
         if (msg == '/help') {
-            socket.emit('message', {message: `Comandos disponibles: /help, /list, /hello, /date` });
+            socket.emit('message', {message: 'Comandos disponibles: /help, /list, /hello, /date' });
         } else if (msg == '/list') {
-            socket.emit('message', {message: 'El número de usuarios conectados es: ${usuarios}'});
+            socket.emit('message', {message: `El número de usuarios conectados es: ${usuarios}`});
         } else if (msg == '/hello') {
             socket.emit('message', {message: '¡Hola!'});
         } else if (msg == '/date') {
             const currentDate = new Date().toLocaleString();
-            socket.emit('message', {message: 'La fecha de hoy es: ${currentDate}'});
+            socket.emit('message', {message: `La fecha de hoy es: ${currentDate}`});
         } else {
             socket.emit('message', {message: 'Comando no válido'});
         }
