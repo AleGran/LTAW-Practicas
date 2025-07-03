@@ -7,14 +7,26 @@ const socket = io();
 
 
 socket.on("message", (msg)=>{
-  display.innerHTML += '<p style="color:blue">' + msg.message + '</p>';
+  const p = document.createElement("p");
+  p.classList.add("chat-message");
+  p.textContent = msg.message;
+  display.appendChild(p);
+  display.scrollTop = display.scrollHeight;
 });
 
 //-- Al apretar el botón se envía un mensaje al servidor
 msg_entry.onchange = () => {
-  if (msg_entry.value)
-    socket.send(msg_entry.value);
-  
+  if (msg_entry.value) {
+    const mensaje = msg_entry.value;
+    socket.send(mensaje);
+
+    const p = document.createElement("p");
+    p.classList.add("chat-message", "own");
+    p.textContent = mensaje;
+    display.appendChild(p);
+    display.scrollTop = display.scrollHeight;
+
   //-- Borrar el mensaje actual
   msg_entry.value = "";
-}
+  }
+};

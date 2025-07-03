@@ -32,7 +32,7 @@ app.use(express.static('public'));
 io.on('connect', (socket) => {
   
     socket.emit('message',{ message: '¡Bienvenido al chat!' });
-    io.emit('message', { message: 'Nuevo usuario conectado'});
+    socket.broadcast.emit('message', { message: 'Nuevo usuario conectado'});
     usuarios += 1;
 
 
@@ -59,7 +59,7 @@ io.on('connect', (socket) => {
         }
     } else {
     //-- Si no, reenviarlo a todos los clientes conectados
-    io.emit('message', {message: msg});
+    socket.broadcast.emit('message', {message: msg});
     }});
 
 });
